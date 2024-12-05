@@ -1,4 +1,5 @@
 import 'package:coffe_menu/cores/error/page/ErrorPage.dart';
+import 'package:coffe_menu/cores/notFound/notFound.dart';
 import 'package:coffe_menu/features/auth/presentation/pages/HomePage.dart';
 import 'package:coffe_menu/features/auth/presentation/pages/loginPage.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +23,7 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const ErrorPage(),
     ),
   ],
+  errorBuilder: (context, state) => const NotFoundPage(),
   redirect: (context, state) {
     if (state.uri.toString() == '/') {
       return '/client/default';

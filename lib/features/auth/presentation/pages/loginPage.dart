@@ -175,7 +175,7 @@ class LoginPage extends StatelessWidget {
                             topRight: Radius.circular(107),
                           ),
                         ),
-                        child: Column(
+                        /*child: Column(
                           children: [
                             const SizedBox(
                               height: 80,
@@ -185,7 +185,7 @@ class LoginPage extends StatelessWidget {
                               passwordController: passwordController,
                             ),
                           ],
-                        ),
+                        ),*/
                       ),
                     );
                   },
