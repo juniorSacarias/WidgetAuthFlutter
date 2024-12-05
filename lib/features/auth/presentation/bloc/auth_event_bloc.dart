@@ -25,3 +25,12 @@ class LoginRequested extends AuthEvent {
 
 /// Event triggered when a logout is requested.
 class LogoutRequested extends AuthEvent {}
+
+class FetchClientData extends AuthEvent {
+  final String appTitle;
+
+  const FetchClientData(this.appTitle);
+
+  @override
+  List<Object> get props => [appTitle];
+}

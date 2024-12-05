@@ -1,3 +1,6 @@
+// auth_bloc.dart
+import 'package:coffe_menu/features/appClient/domain/entities/appClient_entities.dart';
+import 'package:coffe_menu/features/appClient/domain/useCases/appClientName_useCases.dart';
 import 'package:coffe_menu/features/auth/domain/usecases/auth_usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,30 +8,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'auth_event_bloc.dart';
 part 'auth_state_bloc.dart';
 
-/// Bloc responsible for handling authentication events and states.
-///
-/// This class extends the `Bloc` class from the `flutter_bloc` package and
-/// manages the authentication flow by responding to `AuthEvent` events and
-/// emitting `AuthState` states.
-///
-/// The `AuthBloc` requires a `LoginUseCase` to be provided via its constructor.
-///
-/// Events handled:
-/// - `LoginRequested`: Triggered when a login attempt is made.
-/// - `LogoutRequested`: Triggered when a logout attempt is made.
-///
-/// States emitted:
-/// - `AuthInitial`: Initial state of the authentication process.
-/// - `AuthLoading`: State emitted when a login attempt is in progress.
-/// - `AuthAuthenticated`: State emitted when a user is successfully authenticated.
-/// - `AuthError`: State emitted when an error occurs during authentication.
-/// - `AuthLoggedOut`: State emitted when a user is logged out.
+bool isAuthenticated = false; // Variable global para el estado de autenticación
+
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUseCase loginUseCase;
+  final AppclientnameUsecases appclientnameUsecases;
 
-  AuthBloc({required this.loginUseCase}) : super(AuthInitial()) {
+  AuthBloc({
+    required this.loginUseCase,
+    required this.appclientnameUsecases,
+  }) : super(AuthInitial()) {
     on<LoginRequested>(_onLoginRequested);
     on<LogoutRequested>(_onLogoutRequested);
+    on<FetchClientData>(_onFetchClientData);
   }
 
   Future<void> _onLoginRequested(
@@ -39,6 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     try {
       final user = await loginUseCase.execute(event.username, event.password);
+      isAuthenticated = true; // Actualiza el estado de autenticación
       emit(AuthAuthenticated(user.userName));
     } catch (e) {
       emit(AuthError("Error al iniciar sesión: ${e.toString()}"));
@@ -49,6 +42,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     LogoutRequested event,
     Emitter<AuthState> emit,
   ) async {
+    isAuthenticated = false; // Actualiza el estado de autenticación
     emit(AuthLoggedOut());
+  }
+
+  Future<void> _onFetchClientData(
+    FetchClientData event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+
+    final result = await appclientnameUsecases.call(appTitle: event.appTitle);
+    result.fold(
+      (failure) => emit(AuthError("Error al obtener los datos del cliente")),
+      (client) => emit(ClientDataLoaded(client)),
+    );
   }
 }
