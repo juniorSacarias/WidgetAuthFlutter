@@ -1,8 +1,8 @@
-import 'package:coffe_menu/cores/widgets/textWidget.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/SignInWithGoogle/signinGoogle.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/loginButton.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/loginInput.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/loginRegister.dart';
+import 'package:coffe_menu/cores/widgets/text_widget.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/SignInWithGoogle/signin_google.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/login_button.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/login_input.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/login_register.dart';
 import 'package:flutter/material.dart';
 
 /// A stateless widget that represents a login form.
@@ -31,11 +31,13 @@ import 'package:flutter/material.dart';
 class LoginForm extends StatelessWidget {
   final TextEditingController usernameController;
   final TextEditingController passwordController;
+  final String? userName;
 
   const LoginForm({
     super.key,
     required this.usernameController,
     required this.passwordController,
+    this.userName,
   });
 
   @override
@@ -55,14 +57,15 @@ class LoginForm extends StatelessWidget {
               children: [
                 if (isLargeScreen) ...[
                   const SizedBox(height: 50),
-                  const TextWidget(
-                    text: 'AhaStudio',
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Montserrat',
+                  if (userName != null)
+                    TextWidget(
+                      text: userName!,
+                      style: const TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Montserrat',
+                      ),
                     ),
-                  ),
                   const SizedBox(height: 50),
                 ],
                 LoginInput(

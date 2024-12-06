@@ -1,4 +1,4 @@
-import 'package:coffe_menu/cores/widgets/textWidget.dart';
+import 'package:coffe_menu/cores/widgets/text_widget.dart';
 import 'package:coffe_menu/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:coffe_menu/cores/widgets/textWidget.dart';
+import 'package:coffe_menu/cores/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 /// A stateless widget that displays a login/register form.
