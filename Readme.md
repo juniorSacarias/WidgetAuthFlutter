@@ -54,6 +54,7 @@ This project uses the following key libraries to ensure quality and performance:
 - **[Flutter Spinkit](https://pub.dev/packages/flutter_spinkit)**: Simplified load animations.
 - **[Flutter SVG](https://pub.dev/packages/flutter_svg)**: Use SVG in Flutter.
 - **[Elegant Notification](https://pub.dev/packages/elegant_notification)**: Beautiful notifications in Flutter:
+- **[Go Router](https://pub.dev/packages/go_router)**: Simple router for flutter
 ---
 
 ## 🚀 Getting Started
@@ -74,5 +75,11 @@ This project uses the following key libraries to ensure quality and performance:
   # Base URL of the API
   BASEURL=https://api.example.com
   
-  # Specific endpoint
+  # Specific endpoint ( server endpoint for logic of auth )
   ENDPOINT=/v1/authenticate
+
+  # Specific endpoitn for clients ( New Version are available the posibility for can use diferent clients for the auth )
+  ENDPOINTCLIENT = /v1/appClients
+
+  # Specific default client ( New version are available the posibility for can define a default client )
+  DEFAULT_CLIENT = thisisadefaultclientexample
