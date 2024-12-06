@@ -1,8 +1,8 @@
-import 'package:coffe_menu/cores/widgets/textWidget.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/SignInWithGoogle/signinGoogle.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/loginButton.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/loginInput.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/loginRegister.dart';
+import 'package:coffe_menu/cores/widgets/text_widget.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/SignInWithGoogle/signin_google.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/login_button.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/login_input.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/login_register.dart';
 import 'package:flutter/material.dart';
 
 /// A stateless widget that represents a login form.

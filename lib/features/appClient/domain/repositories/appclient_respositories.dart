@@ -1,4 +1,4 @@
-import 'package:coffe_menu/features/appClient/domain/entities/appClient_entities.dart';
+import 'package:coffe_menu/features/appClient/domain/entities/appclient_entities.dart';
 
 abstract class AppclientRespositories {
   Future<List<AppclientEntities>> fetchAppClient();

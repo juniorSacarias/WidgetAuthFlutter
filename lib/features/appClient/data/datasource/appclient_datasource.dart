@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:coffe_menu/features/appClient/data/models/appClient_models.dart';
+import 'package:coffe_menu/features/appClient/data/models/appclient_models.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -45,10 +45,8 @@ class AppclientDatasourceImpl implements AppclientDatasource {
       if (response.data == null) throw Exception('Can not find the client');
       final Map<String, dynamic> json = jsonDecode(response.data!);
       final appClient = AppclientModels.fromJson(json);
-      print('Fetched App Client: $appClient');
       return appClient;
     } catch (e) {
-      print('Error: $e');
       return const AppclientModels(
         id: 0,
         appTitle: '',

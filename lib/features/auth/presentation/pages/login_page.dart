@@ -1,8 +1,8 @@
 import 'package:coffe_menu/features/auth/domain/usecases/auth_usecases.dart';
-import 'package:coffe_menu/features/appClient/domain/useCases/appClientName_useCases.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/backgrounds/loginformBackground.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/backgrounds/primaryBackgroun.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/stateController/authState.dart';
+import 'package:coffe_menu/features/appClient/domain/useCases/appclientname_usecases.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/backgrounds/loginform_background.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/backgrounds/primary_background.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/stateController/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffe_menu/features/auth/presentation/bloc/auth_bloc.dart';
@@ -39,7 +39,6 @@ class LoginPage extends StatelessWidget {
                     if (state is ClientDataLoaded) {
                       final client = state.client;
                       if (client.appTitle.isEmpty) {
-                        // Redirigir a la página de error si el cliente no se encuentra
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           GoRouter.of(context).go('/error');
                         });
@@ -59,7 +58,6 @@ class LoginPage extends StatelessWidget {
                         ),
                       );
                     } else if (state is AuthError) {
-                      // Redirigir a la página de error si hay un error de autenticación
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         GoRouter.of(context).go('/error');
                       });

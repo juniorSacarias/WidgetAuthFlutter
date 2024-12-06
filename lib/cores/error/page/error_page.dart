@@ -1,15 +1,18 @@
-import 'package:coffe_menu/cores/widgets/textWidget.dart';
+import 'package:coffe_menu/cores/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-class NotFoundPage extends StatelessWidget {
-  const NotFoundPage({super.key});
+class ErrorPage extends StatelessWidget {
+  const ErrorPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final defaultClient = dotenv.env['DEFAULT_CLIENT'];
+
     return Scaffold(
-      backgroundColor: const Color(0xFFFFA726), // Fondo naranja
+      backgroundColor: const Color(0xFFFFA726), 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +26,7 @@ class NotFoundPage extends StatelessWidget {
             const SizedBox(height: 30),
             // Texto principal
             const TextWidget(
-              text: "Wow it seems the route doesn't exist",
+              text: 'Invalid route',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 32,
@@ -32,17 +35,32 @@ class NotFoundPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            // Botón
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: TextWidget(
+                text:
+                    'Please enter a url in the path or use the button to access the default client',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.normal,
+                  fontFamily: 'Montserrat',
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            const SizedBox(height: 50),
+            // Botón
             SizedBox(
               width: 225, // Ancho del botón
               height: 35, // Altura del botón
               child: ElevatedButton(
                 onPressed: () {
-                  // Redirigir a la página de inicio
-                  context.go('/home');
+                  // Redirigir al cliente predeterminado
+                  context.go('/client/$defaultClient');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFFFE082),
@@ -52,7 +70,7 @@ class NotFoundPage extends StatelessWidget {
                   elevation: 0,
                 ),
                 child: const TextWidget(
-                  text: 'Go Home',
+                  text: 'Default client',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,

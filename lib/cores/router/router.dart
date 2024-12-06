@@ -1,9 +1,9 @@
-import 'package:coffe_menu/cores/error/page/ErrorPage.dart';
-import 'package:coffe_menu/cores/notFound/notFound.dart';
-import 'package:coffe_menu/features/auth/presentation/pages/HomePage.dart';
-import 'package:coffe_menu/features/auth/presentation/pages/loginPage.dart';
+import 'package:coffe_menu/cores/error/page/error_page.dart';
+import 'package:coffe_menu/cores/notFound/notfound.dart';
+import 'package:coffe_menu/features/auth/presentation/pages/home_page.dart';
+import 'package:coffe_menu/features/auth/presentation/pages/login_page.dart';
 import 'package:go_router/go_router.dart';
-import 'package:coffe_menu/features/auth/presentation/bloc/auth_bloc.dart'; // Importa AuthBloc
+import 'package:coffe_menu/features/auth/presentation/bloc/auth_bloc.dart'; 
 
 final GoRouter router = GoRouter(
   routes: [

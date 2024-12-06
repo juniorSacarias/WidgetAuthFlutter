@@ -37,7 +37,6 @@ class HomePage extends StatelessWidget {
             ),
           );
         } else {
-          // Redirigir a la página de inicio de sesión si no está autenticado
           WidgetsBinding.instance.addPostFrameCallback((_) {
             GoRouter.of(context).go('/');
           });

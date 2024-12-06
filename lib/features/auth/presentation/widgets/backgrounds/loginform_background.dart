@@ -1,7 +1,7 @@
-import 'package:coffe_menu/cores/widgets/logoWidget.dart';
+import 'package:coffe_menu/cores/widgets/logo_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/loginForm.dart';
-import 'package:coffe_menu/features/appClient/domain/entities/appClient_entities.dart';
+import 'package:coffe_menu/features/auth/presentation/widgets/loginForm/login_form.dart';
+import 'package:coffe_menu/features/appClient/domain/entities/appclient_entities.dart';
 
 class FondoLoginForm extends StatelessWidget {
   final bool isLargeScreen;

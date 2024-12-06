@@ -1,6 +1,6 @@
 import 'package:coffe_menu/cores/error/failure.dart';
-import 'package:coffe_menu/features/appClient/domain/entities/appClient_entities.dart';
-import 'package:coffe_menu/features/appClient/domain/repositories/appClient_respositories.dart';
+import 'package:coffe_menu/features/appClient/domain/entities/appclient_entities.dart';
+import 'package:coffe_menu/features/appClient/domain/repositories/appclient_respositories.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 

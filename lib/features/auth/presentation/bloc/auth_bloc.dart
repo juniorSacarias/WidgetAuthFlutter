@@ -1,6 +1,6 @@
 // auth_bloc.dart
-import 'package:coffe_menu/features/appClient/domain/entities/appClient_entities.dart';
-import 'package:coffe_menu/features/appClient/domain/useCases/appClientName_useCases.dart';
+import 'package:coffe_menu/features/appClient/domain/entities/appclient_entities.dart';
+import 'package:coffe_menu/features/appClient/domain/useCases/appclientname_usecases.dart';
 import 'package:coffe_menu/features/auth/domain/usecases/auth_usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,7 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     final result = await appclientnameUsecases.call(appTitle: event.appTitle);
     result.fold(
-      (failure) => emit(AuthError("Error al obtener los datos del cliente")),
+      (failure) => emit(const AuthError("Error al obtener los datos del cliente")),
       (client) => emit(ClientDataLoaded(client)),
     );
   }
