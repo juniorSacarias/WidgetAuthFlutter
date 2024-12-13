@@ -1,10 +1,10 @@
 import 'package:coffe_menu/features/ahamatic_login/domain/entities/ahamatic_login_entities.dart';
 
-class AhamaticLoginModels extends AhamaticLoginEntities {
-  const AhamaticLoginModels({
-    required super.apiKey,
-    required super.emailAddress,
-    required super.password,
+class AhamaticLoginModel extends AhamaticLoginEntities {
+  const AhamaticLoginModel({
+    super.apiKey,
+    super.emailAddress,
+    super.password,
     super.captchToken,
     super.remenberMe,
     super.otherData,
@@ -17,14 +17,16 @@ class AhamaticLoginModels extends AhamaticLoginEntities {
     super.ahamaticTokenExpiration,
   });
 
-  factory AhamaticLoginModels.fromJson(Map<String, dynamic> json) {
-    return AhamaticLoginModels(
+  factory AhamaticLoginModel.fromJson(Map<String, dynamic> json) {
+    return AhamaticLoginModel(
       apiKey: json['apiKey'],
       emailAddress: json['emailAddress'],
       password: json['password'],
       captchToken: json['captchToken'],
       remenberMe: json['remenberMe'],
-      otherData: json['otherData'],
+      otherData: json['otherData'] != null
+          ? List<String>.from(json['otherData'])
+          : null,
       message: json['message'],
       token: json['token'],
       refreshToken: json['refreshToken'],
@@ -35,4 +37,3 @@ class AhamaticLoginModels extends AhamaticLoginEntities {
     );
   }
 }
-

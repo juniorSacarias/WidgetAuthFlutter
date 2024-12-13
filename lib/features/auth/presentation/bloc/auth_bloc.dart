@@ -2,7 +2,6 @@
 import 'package:coffe_menu/features/ahamatic_login/domain/useCases/ahamatic_login_usecases.dart';
 import 'package:coffe_menu/features/appClient/domain/entities/appclient_entities.dart';
 import 'package:coffe_menu/features/appClient/domain/useCases/appclientname_usecases.dart';
-import 'package:coffe_menu/features/auth/domain/usecases/auth_usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,12 +11,10 @@ part 'auth_state_bloc.dart';
 bool isAuthenticated = false; // Variable global para el estado de autenticación
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final LoginUseCase loginUseCase;
   final AppclientnameUsecases appclientnameUsecases;
   final AhamaticLoginUsecases ahamaticLoginUsecases;
 
   AuthBloc({
-    required this.loginUseCase,
     required this.appclientnameUsecases,
     required this.ahamaticLoginUsecases,
   }) : super(AuthInitial()) {
@@ -38,8 +35,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         event.username,
         event.password,
       );
-      isAuthenticated = true; // Actualiza el estado de autenticación
-      emit(AuthAuthenticated(user.message ?? ''));
+      isAuthenticated = true;
+      emit(AuthAuthenticated(user.token ?? ''));
     } catch (e) {
       emit(AuthError("Error al iniciar sesión: ${e.toString()}"));
     }
@@ -49,7 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     LogoutRequested event,
     Emitter<AuthState> emit,
   ) async {
-    isAuthenticated = false; // Actualiza el estado de autenticación
+    isAuthenticated = false; 
     emit(AuthLoggedOut());
   }
 

@@ -41,7 +41,7 @@ void setup() {
   // Blocs
   getIt.registerFactory<AuthBloc>(
     () => AuthBloc(
-      loginUseCase: getIt<LoginUseCase>(),
+      //loginUseCase: getIt<LoginUseCase>(),
       appclientnameUsecases: getIt<AppclientnameUsecases>(),
       ahamaticLoginUsecases: getIt<AhamaticLoginUsecases>(),
     ),

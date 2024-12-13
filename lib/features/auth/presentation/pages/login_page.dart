@@ -1,5 +1,4 @@
 import 'package:coffe_menu/features/ahamatic_login/domain/useCases/ahamatic_login_usecases.dart';
-import 'package:coffe_menu/features/auth/domain/usecases/auth_usecases.dart';
 import 'package:coffe_menu/features/appClient/domain/useCases/appclientname_usecases.dart';
 import 'package:coffe_menu/features/auth/presentation/widgets/backgrounds/loginform_background.dart';
 import 'package:coffe_menu/features/auth/presentation/widgets/backgrounds/primary_background.dart';
@@ -26,7 +25,6 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => AuthBloc(
-          loginUseCase: GetIt.instance<LoginUseCase>(),
           appclientnameUsecases: GetIt.instance<AppclientnameUsecases>(),
           ahamaticLoginUsecases: GetIt.instance<AhamaticLoginUsecases>(),
         )..add(FetchClientData(appTitle)),

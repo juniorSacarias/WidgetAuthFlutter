@@ -10,9 +10,9 @@ class AhamaticLoginEntities extends Equatable {
   final String? message;
   final String? token;
   final String? refreshToken;
-  final Object? account;
+  final Map<String, dynamic>? account;
   final String? applicationId;
-  final String? application;
+  final Map<String, dynamic>? application;
   final int? ahamaticTokenExpiration;
 
   const AhamaticLoginEntities({
