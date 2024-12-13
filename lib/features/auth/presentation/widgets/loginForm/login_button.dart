@@ -3,6 +3,7 @@ import 'package:coffe_menu/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// A custom `LoginButton` widget that displays a sign-in button.
 ///
@@ -49,10 +50,11 @@ class LoginButton extends StatelessWidget {
         onPressed: () {
           final username = usernameController.text.trim();
           final password = passwordController.text.trim();
+          final apiKey = dotenv.get('API_KEY');
 
           if (username.isNotEmpty && password.isNotEmpty) {
             context.read<AuthBloc>().add(
-                  LoginRequested(username, password),
+                  LoginRequested(username, password, apiKey),
                 );
           } else {
             ElegantNotification.info(

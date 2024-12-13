@@ -1,3 +1,4 @@
+import 'package:coffe_menu/features/ahamatic_login/domain/useCases/ahamatic_login_usecases.dart';
 import 'package:coffe_menu/features/auth/domain/usecases/auth_usecases.dart';
 import 'package:coffe_menu/features/appClient/domain/useCases/appclientname_usecases.dart';
 import 'package:coffe_menu/features/auth/presentation/widgets/backgrounds/loginform_background.dart';
@@ -14,7 +15,7 @@ import 'package:go_router/go_router.dart';
 class LoginPage extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final String? clientName; // nombre desde el parámetro uri
+  final String? clientName; 
 
   LoginPage({super.key, this.clientName});
 
@@ -27,6 +28,7 @@ class LoginPage extends StatelessWidget {
         create: (context) => AuthBloc(
           loginUseCase: GetIt.instance<LoginUseCase>(),
           appclientnameUsecases: GetIt.instance<AppclientnameUsecases>(),
+          ahamaticLoginUsecases: GetIt.instance<AhamaticLoginUsecases>(),
         )..add(FetchClientData(appTitle)),
         child: LayoutBuilder(
           builder: (context, constraints) {

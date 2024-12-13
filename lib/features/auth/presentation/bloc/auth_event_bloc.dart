@@ -1,7 +1,7 @@
 part of 'auth_bloc.dart';
 
 /// Abstract class representing authentication events.
-/// 
+///
 /// This class extends [Equatable] to allow for value comparison of events.
 abstract class AuthEvent extends Equatable {
   const AuthEvent();
@@ -11,16 +11,17 @@ abstract class AuthEvent extends Equatable {
 }
 
 /// Event triggered when a login is requested.
-/// 
+///
 /// Contains the [username] and [password] required for login.
 class LoginRequested extends AuthEvent {
   final String username;
   final String password;
+  final String apiKey;
 
-  const LoginRequested(this.username, this.password);
+  const LoginRequested(this.username, this.password, this.apiKey);
 
   @override
-  List<Object> get props => [username, password];
+  List<Object> get props => [username, password, apiKey];
 }
 
 /// Event triggered when a logout is requested.

@@ -43,7 +43,24 @@ void setup() {
     () => AuthBloc(
       loginUseCase: getIt<LoginUseCase>(),
       appclientnameUsecases: getIt<AppclientnameUsecases>(),
+      ahamaticLoginUsecases: getIt<AhamaticLoginUsecases>(),
     ),
+  );
+
+  ///////////////// Ahamatic /////////////////////////
+  // Datasources
+  getIt.registerLazySingleton<AhamaticLoginDatasource>(
+    () => AhamaticLoginDatasourceImpl(getIt<Dio>()),
+  );
+
+  // Repositories
+  getIt.registerLazySingleton<AhamaticLoginRepository>(
+    () => AhamaticLoginRepositoryImpl(getIt<AhamaticLoginDatasource>()),
+  );
+
+  // Use cases
+  getIt.registerLazySingleton<AhamaticLoginUsecases>(
+    () => AhamaticLoginUsecases(getIt<AhamaticLoginRepository>()),
   );
 
   ///////////////// appClients ///////////////////////
