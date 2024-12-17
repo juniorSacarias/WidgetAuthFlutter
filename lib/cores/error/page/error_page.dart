@@ -9,10 +9,20 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Asegúrate de que dotenv esté inicializado antes de acceder a las variables de entorno
+    if (!dotenv.isInitialized) {
+      return const Scaffold(
+        body: Center(
+          child: Text('Error: Dotenv no está inicializado'),
+        ),
+      );
+    }
+
+    // ignore: unused_local_variable
     final defaultClient = dotenv.env['DEFAULT_CLIENT'];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFFA726), 
+      backgroundColor: const Color(0xFFFFA726),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,9 +45,7 @@ class ErrorPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: TextWidget(
@@ -60,7 +68,7 @@ class ErrorPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Redirigir al cliente predeterminado
-                  context.go('/client/$defaultClient');
+                  context.go('/client/ahamatic');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFFFE082),

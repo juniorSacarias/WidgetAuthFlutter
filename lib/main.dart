@@ -11,9 +11,17 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 /// and initializes the application with a `BlocProvider` for the `AuthBloc`.
 ///
 /// The `runApp` function is called with `MyApp` as the root widget.
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Asegúrate de que los widgets de Flutter estén inicializados
   setup();
-  await dotenv.load(fileName: ".env");
+  try {
+    await dotenv.load(fileName: "assets/.env");
+  } on FileNotFoundError {
+    // ignore: avoid_print
+    print(
+        "Archivo .env no encontrado. Continuando sin cargar variables de entorno.");
+  }
   runApp(
     BlocProvider(
       create: (_) => getIt<AuthBloc>(),

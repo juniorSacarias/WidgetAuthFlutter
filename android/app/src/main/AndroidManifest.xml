@@ -2,7 +2,8 @@
     <application
         android:label="coffe_menu"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:enableOnBackInvokedCallback="true"> <!-- Habilitar OnBackInvokedCallback -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
